@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Seller Access | ScrapiFy{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container auth">
+        <div class="auth__intro">
+            <span class="pill">Seller portal</span>
+            <h1>Sell scrap with speed.</h1>
+            <p>List inventory, schedule pickups, and get paid quickly.</p>
+            <div class="auth__highlights">
+                <div>
+                    <h4>Instant pricing</h4>
+                    <p>Get market-based offers in seconds.</p>
+                </div>
+                <div>
+                    <h4>Pickup orchestration</h4>
+                    <p>Choose slots and track drivers in real time.</p>
+                </div>
+            </div>
+        </div>
+        <div class="auth__panel">
+            <div class="card card--glass">
+                <h3>Seller Login</h3>
+                <form class="form">
+                    <label>Email</label>
+                    <input type="email" placeholder="seller@email.com" />
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" />
+                    <button class="btn btn--primary" type="button">Log in</button>
+                </form>
+                <div class="divider"></div>
+                <h4>Create Seller Account</h4>
+                <form class="form">
+                    <label>Business name</label>
+                    <input type="text" placeholder="Vector Salvage" />
+                    <label>Work email</label>
+                    <input type="email" placeholder="ops@vectorsalvage.com" />
+                    <label>Password</label>
+                    <input type="password" placeholder="Create password" />
+                    <button class="btn btn--accent" type="button">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

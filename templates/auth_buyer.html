@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Buyer Access | ScrapiFy{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container auth">
+        <div class="auth__intro">
+            <span class="pill">Buyer portal</span>
+            <h1>Source scrap with confidence.</h1>
+            <p>Access curated inventories, instant quotes, and compliance-ready documentation.</p>
+            <div class="auth__highlights">
+                <div>
+                    <h4>Smart filters</h4>
+                    <p>Find material faster with AI-powered matching.</p>
+                </div>
+                <div>
+                    <h4>Verified sellers</h4>
+                    <p>Every listing is vetted for quality and compliance.</p>
+                </div>
+            </div>
+        </div>
+        <div class="auth__panel">
+            <div class="card card--glass">
+                <h3>Buyer Login</h3>
+                <form class="form">
+                    <label>Email</label>
+                    <input type="email" placeholder="buyer@email.com" />
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" />
+                    <button class="btn btn--primary" type="button">Log in</button>
+                </form>
+                <div class="divider"></div>
+                <h4>Create Buyer Account</h4>
+                <form class="form">
+                    <label>Company name</label>
+                    <input type="text" placeholder="Neo Metals" />
+                    <label>Work email</label>
+                    <input type="email" placeholder="procurement@neometals.com" />
+                    <label>Password</label>
+                    <input type="password" placeholder="Create password" />
+                    <button class="btn btn--accent" type="button">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

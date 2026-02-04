@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard | ScrapiFy{% endblock %}
+
+{% block content %}
+<section class="section dashboard">
+    <div class="container">
+        <div class="dashboard__header">
+            <div>
+                <span class="pill">Admin dashboard</span>
+                <h1>Platform intelligence</h1>
+                <p>Control risk, growth, and supply in a unified command view.</p>
+            </div>
+            <div class="dashboard__actions">
+                <button class="btn btn--primary">Approve vendors</button>
+                <button class="btn btn--ghost">Export report</button>
+            </div>
+        </div>
+
+        <div class="grid grid--3">
+            <div class="card">
+                <h3>1,482</h3>
+                <p>Active users</p>
+                <span class="tag tag--up">+4.1% week</span>
+            </div>
+            <div class="card">
+                <h3>74</h3>
+                <p>Compliance flags</p>
+                <span class="tag tag--warn">12 urgent</span>
+            </div>
+            <div class="card">
+                <h3>$9.8M</h3>
+                <p>GMV this month</p>
+                <span class="tag tag--info">Realtime pipeline</span>
+            </div>
+        </div>
+
+        <div class="grid grid--2">
+            <div class="card card--glass">
+                <h3>Vendor approvals</h3>
+                <div class="list-row">
+                    <div>
+                        <h4>Orion Recycling</h4>
+                        <p>Pending KYB • Submitted 2 hours ago</p>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn--success">Approve</button>
+                        <button class="btn btn--ghost">Review</button>
+                    </div>
+                </div>
+                <div class="list-row">
+                    <div>
+                        <h4>Nova Scrapworks</h4>
+                        <p>Pending KYB • Submitted 1 day ago</p>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn--success">Approve</button>
+                        <button class="btn btn--ghost">Review</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card card--glass">
+                <h3>Risk signals</h3>
+                <div class="risk">
+                    <div>
+                        <p>Dispute rate</p>
+                        <h4>1.9%</h4>
+                    </div>
+                    <div>
+                        <p>Late pickups</p>
+                        <h4>3.2%</h4>
+                    </div>
+                    <div>
+                        <p>Payment delays</p>
+                        <h4>0.8%</h4>
+                    </div>
+                </div>
+                <button class="btn btn--accent">Open risk monitor</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

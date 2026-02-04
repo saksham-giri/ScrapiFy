@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}ScrapiFy | Modern Scrap Logistics{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container hero__inner">
+        <div class="hero__content">
+            <span class="pill">Next-gen scrap marketplace</span>
+            <h1>Move scrap like a modern fleet. Fast, trusted, and transparent.</h1>
+            <p>
+                ScrapiFy connects verified sellers with high-intent buyers. Real-time pricing,
+                scheduled pickups, and compliance baked in.
+            </p>
+            <div class="hero__actions">
+                <a class="btn btn--primary" href="{% url 'buyer_auth' %}">I want to buy</a>
+                <a class="btn btn--ghost" href="{% url 'seller_auth' %}">I want to sell</a>
+            </div>
+            <div class="hero__stats">
+                <div>
+                    <h3>98%</h3>
+                    <p>On-time pickups</p>
+                </div>
+                <div>
+                    <h3>2K+</h3>
+                    <p>Verified vendors</p>
+                </div>
+                <div>
+                    <h3>24/7</h3>
+                    <p>Market insights</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero__panel">
+            <div class="card card--glass">
+                <h4>Live Marketplace</h4>
+                <p>Track bids, routes, and compliance in one place.</p>
+                <ul class="list">
+                    <li>Dynamic pricing engine</li>
+                    <li>Automated pickup scheduling</li>
+                    <li>Instant quality verification</li>
+                </ul>
+                <a class="btn btn--accent" href="{% url 'buyer_auth' %}">Preview dashboard</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container grid grid--3">
+        <div class="card">
+            <h3>Buyer-first sourcing</h3>
+            <p>Curated inventories, verified sellers, and smart filters to secure the right material.</p>
+        </div>
+        <div class="card">
+            <h3>Seller payouts in hours</h3>
+            <p>Digital contracts, real-time weighing, and direct payouts for every pickup.</p>
+        </div>
+        <div class="card">
+            <h3>Compliance built in</h3>
+            <p>Automated documentation with GPS-tracked pickups and audit-ready trails.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section section--dark">
+    <div class="container split">
+        <div>
+            <h2>Designed for velocity</h2>
+            <p>
+                Deliver a premium experience to both ends of the supply chain. ScrapiFy turns
+                complex scrap logistics into a clean, modern flow.
+            </p>
+            <a class="btn btn--primary" href="{% url 'buyer_auth' %}">Get started</a>
+        </div>
+        <div class="stack">
+            <div class="card card--outline">
+                <h4>Buyer intelligence</h4>
+                <p>Forecast demand, track spend, and optimize procurement cycles.</p>
+            </div>
+            <div class="card card--outline">
+                <h4>Seller operations</h4>
+                <p>Manage listings, logistics partners, and quality scoring.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

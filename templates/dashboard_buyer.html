@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Buyer Dashboard | ScrapiFy{% endblock %}
+
+{% block content %}
+<section class="section dashboard">
+    <div class="container">
+        <div class="dashboard__header">
+            <div>
+                <span class="pill">Buyer dashboard</span>
+                <h1>Procurement command center</h1>
+                <p>Monitor sourcing, bidding, and logistics in one premium workspace.</p>
+            </div>
+            <div class="dashboard__actions">
+                <button class="btn btn--primary">Create request</button>
+                <button class="btn btn--ghost">Invite teammate</button>
+            </div>
+        </div>
+
+        <div class="grid grid--3">
+            <div class="card">
+                <h3>$2.4M</h3>
+                <p>Monthly spend tracked</p>
+                <span class="tag tag--up">+8.2% efficiency</span>
+            </div>
+            <div class="card">
+                <h3>36</h3>
+                <p>Active bids</p>
+                <span class="tag tag--warn">5 closing today</span>
+            </div>
+            <div class="card">
+                <h3>12</h3>
+                <p>Pickups in transit</p>
+                <span class="tag tag--info">Live tracking enabled</span>
+            </div>
+        </div>
+
+        <div class="grid grid--2">
+            <div class="card card--glass">
+                <h3>Top listings</h3>
+                <div class="list-row">
+                    <div>
+                        <h4>Aluminum extrusion</h4>
+                        <p>Grade 6061 • 24 tons</p>
+                    </div>
+                    <span class="badge">$1,480 / ton</span>
+                </div>
+                <div class="list-row">
+                    <div>
+                        <h4>Shredded steel</h4>
+                        <p>Grade HMS • 55 tons</p>
+                    </div>
+                    <span class="badge">$410 / ton</span>
+                </div>
+                <div class="list-row">
+                    <div>
+                        <h4>Copper wire</h4>
+                        <p>Bright • 8 tons</p>
+                    </div>
+                    <span class="badge">$6,520 / ton</span>
+                </div>
+            </div>
+            <div class="card card--glass">
+                <h3>Upcoming pickups</h3>
+                <div class="timeline">
+                    <div>
+                        <span class="timeline__time">09:30</span>
+                        <p>Neo Metals • Dock 3</p>
+                    </div>
+                    <div>
+                        <span class="timeline__time">13:10</span>
+                        <p>Orbital Steel • Yard B</p>
+                    </div>
+                    <div>
+                        <span class="timeline__time">16:45</span>
+                        <p>Reform Copper • Gate 1</p>
+                    </div>
+                </div>
+                <button class="btn btn--accent">Open live map</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

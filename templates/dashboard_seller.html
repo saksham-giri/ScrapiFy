@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}Seller Dashboard | ScrapiFy{% endblock %}
+
+{% block content %}
+<section class="section dashboard">
+    <div class="container">
+        <div class="dashboard__header">
+            <div>
+                <span class="pill">Seller dashboard</span>
+                <h1>Operations hub</h1>
+                <p>Manage listings, pickups, and payouts with precision.</p>
+            </div>
+            <div class="dashboard__actions">
+                <button class="btn btn--primary">Create listing</button>
+                <button class="btn btn--ghost">Schedule pickup</button>
+            </div>
+        </div>
+
+        <div class="grid grid--3">
+            <div class="card">
+                <h3>$680k</h3>
+                <p>Weekly revenue</p>
+                <span class="tag tag--up">+12% MoM</span>
+            </div>
+            <div class="card">
+                <h3>18</h3>
+                <p>Active listings</p>
+                <span class="tag tag--info">4 verified today</span>
+            </div>
+            <div class="card">
+                <h3>6</h3>
+                <p>Pickups queued</p>
+                <span class="tag tag--warn">2 priority</span>
+            </div>
+        </div>
+
+        <div class="grid grid--2">
+            <div class="card card--glass">
+                <h3>Pickup status</h3>
+                <div class="list-row">
+                    <div>
+                        <h4>Vector Salvage</h4>
+                        <p>ETA 11:20 • Dock 5</p>
+                    </div>
+                    <span class="badge">On route</span>
+                </div>
+                <div class="list-row">
+                    <div>
+                        <h4>Atlas Foundry</h4>
+                        <p>ETA 14:00 • Yard C</p>
+                    </div>
+                    <span class="badge badge--amber">Loading</span>
+                </div>
+                <div class="list-row">
+                    <div>
+                        <h4>Meridian Metals</h4>
+                        <p>ETA 17:10 • Gate 2</p>
+                    </div>
+                    <span class="badge badge--success">Scheduled</span>
+                </div>
+            </div>
+            <div class="card card--glass">
+                <h3>Quality scorecard</h3>
+                <div class="score">
+                    <div class="score__ring">
+                        <span>92</span>
+                        <small>Grade</small>
+                    </div>
+                    <div class="score__details">
+                        <p>Verified loads: 28</p>
+                        <p>Claims resolved: 2</p>
+                        <p>On-time rate: 96%</p>
+                    </div>
+                </div>
+                <button class="btn btn--accent">View audit</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
