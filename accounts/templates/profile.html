@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}Profile · Scrapify{% endblock %}
+{% block content %}
+<section class="profile-card"><div class="page-heading"><div><span class="eyebrow">Account</span><h1>Your profile.</h1><p class="muted">Your Scrapify account details and marketplace role.</p></div></div><div class="card"><div class="profile-grid"><div class="profile-item"><small>Username</small><strong>{{ request.user.username }}</strong></div><div class="profile-item"><small>Email</small><strong>{{ request.user.email|default:'Not provided' }}</strong></div><div class="profile-item"><small>Phone</small><strong>{{ request.user.phone|default:'Not provided' }}</strong></div><div class="profile-item"><small>Role</small><strong>{{ request.user.role|title }}</strong></div></div></div></section>
+{% endblock %}
