@@ -1,29 +1,6 @@
 {% extends 'base.html' %}
-
+{% block title %}Marketplace · Scrapify{% endblock %}
 {% block content %}
-    <h1>MarketPlace Dashboard</h1>
-
-<hr>
-
-
-
-<p>Available Listings:
-    {% for listing in listings %}
-        <ul><li>
-            <a href="{% url 'scrapdetails' listing.id %}">
-                {{listing.title}}
-            </a>
-            &emsp;
-            <!-- <a href="{% url 'edit_listing' listing.id %}">
-                Edit
-            </a> -->
-            
-        </li></ul>
-    {% empty %}
-        <p>No listings found.</p>
-    {% endfor %}
-
-</p>
-
-
+<div class="page-heading"><div><span class="eyebrow">Marketplace</span><h1>Find recyclable scrap</h1><p class="muted">Browse available materials from Scrapify sellers.</p></div></div>
+{% if listings %}<div class="grid">{% for listing in listings %}<article class="card listing-card"><div><span class="badge">{{ listing.get_category_display }}</span><h2><a href="{% url 'scrapdetails' listing.id %}">{{ listing.title }}</a></h2><p class="muted">{{ listing.desc|truncatewords:18 }}</p></div><div class="card-footer"><div><div class="price">₹{{ listing.asking_price }}</div><small class="muted">{{ listing.weight }} kg · {{ listing.seller.username }}</small></div><a class="btn" href="{% url 'scrapdetails' listing.id %}">View details</a></div></article>{% endfor %}</div>{% else %}<div class="empty"><h2>Nothing available right now</h2><p>Check back soon for new scrap listings.</p></div>{% endif %}
 {% endblock %}
