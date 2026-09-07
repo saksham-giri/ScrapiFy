@@ -1,24 +1,8 @@
 {% extends 'base.html' %}
+{% block title %}Seller Dashboard · Scrapify{% endblock %}
 {% block content %}
-<h1>Seller Dashboard</h1>
-<p>Welcome {{ request.user.username }}</p>
-<p>Email: {{ request.user.email }}</p>
-<p>Role: {{ request.user.role }}</p>
-<hr>
-<h2>Your Statistics</h2>
-<p>Total Listings: {{ total_listings }}</p>
-<p>Pending Pickups: {{ pending_pickups }}</p>
-<p>Completed Pickups: {{ completed_pickups }}</p>
-<hr>
-<h2>My Listings</h2>
-{% for listing in my_listings %}
-    <div>
-        <a href="{% url 'scrapdetails' listing.id %}">{{ listing.title }}</a>
-        — {{ listing.get_status_display }}
-        &emsp;<a href="{% url 'edit_listing' listing.id %}">Edit</a>
-        &emsp;<a href="{% url 'delete_listing' listing.id %}">Delete</a>
-    </div>
-{% empty %}
-    <p>No listings found.</p>
-{% endfor %}
+<div class="page-heading"><div><span class="eyebrow">Seller workspace</span><h1>Your dashboard</h1><p class="muted">Welcome back, {{ request.user.username }}. Manage your scrap listings from one place.</p></div><a class="btn" href="{% url 'ScrapListing' %}">+ Add listing</a></div>
+<div class="stats"><div class="stat"><span class="muted">Total listings</span><strong>{{ total_listings }}</strong></div><div class="stat"><span class="muted">Pending pickups</span><strong>{{ pending_pickups }}</strong></div><div class="stat"><span class="muted">Completed pickups</span><strong>{{ completed_pickups }}</strong></div></div>
+<div class="page-heading"><div><h2>My listings</h2><p class="muted">Keep your inventory up to date.</p></div></div>
+<div class="table-list">{% for listing in my_listings %}<div class="list-row"><div><strong><a href="{% url 'scrapdetails' listing.id %}">{{ listing.title }}</a></strong><div class="muted">{{ listing.get_category_display }} · {{ listing.weight }} kg · ₹{{ listing.asking_price }}</div></div><div class="row-actions"><span class="badge">{{ listing.get_status_display }}</span><a class="btn secondary" href="{% url 'edit_listing' listing.id %}">Edit</a><a class="btn danger" href="{% url 'delete_listing' listing.id %}">Delete</a></div></div>{% empty %}<div class="empty"><h3>No listings yet</h3><p>Start selling recyclable material by creating your first listing.</p><a class="btn" href="{% url 'ScrapListing' %}">Create listing</a></div>{% endfor %}</div>
 {% endblock %}
