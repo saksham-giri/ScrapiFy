@@ -1,18 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}Edit Listing · Scrapify{% endblock %}
 {% block content %}
-
-<h1>Edit Listing</h1>
-
-<form method="POST">
-
-    {% csrf_token %}
-
-    {{ form.as_p }}
-
-    <button type="submit">
-        Save Changes
-    </button>
-
-</form>
-
+<div class="form-card"><div class="auth-title"><span class="eyebrow">Seller tools</span><h1>Edit listing</h1><p class="muted">Update the details buyers see in the marketplace.</p></div><form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit">Save changes</button></form><p><a href="{% url 'seller_dashboard' %}">← Back to dashboard</a></p></div>
 {% endblock %}
