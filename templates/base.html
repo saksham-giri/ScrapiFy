@@ -2,44 +2,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Scrapify - a marketplace for buying and selling recyclable scrap.">
-    <title>{% block title %}Scrapify{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    {% block head %}{% endblock %}
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Scrapify — a modern marketplace for buying and selling recyclable scrap.">
+  <title>{% block title %}Scrapify{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block head %}{% endblock %}
 </head>
 <body>
-<header class="site-header">
-    <nav class="navbar" aria-label="Main navigation">
-        <a class="brand" href="{% url 'home' %}"><span class="brand-mark">S</span> Scrapify</a>
-        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-        <ul class="nav-links">
-            <li><a href="{% url 'home' %}">Home</a></li>
-            {% if request.user.is_authenticated %}
-                {% if request.user.role == 'buyer' %}
-                    <li><a href="{% url 'buyer_dashboard' %}">Dashboard</a></li>
-                    <li><a href="{% url 'marketplace' %}">Marketplace</a></li>
-                {% elif request.user.role == 'seller' %}
-                    <li><a href="{% url 'seller_dashboard' %}">Dashboard</a></li>
-                    <li><a href="{% url 'ScrapListing' %}">Sell Scrap</a></li>
-                {% endif %}
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-            {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a class="btn" href="{% url 'register' %}">Get Started</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-</header>
+<header class="site-header"><nav class="navbar" aria-label="Main navigation">
+  <a class="brand" href="{% url 'home' %}"><span class="brand-mark">♻</span><span>Scrapify</span></a>
+  <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <ul class="nav-links">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    {% if request.user.is_authenticated %}
+      {% if request.user.role == 'buyer' %}<li><a href="{% url 'buyer_dashboard' %}">Dashboard</a></li><li><a href="{% url 'marketplace' %}">Marketplace</a></li>
+      {% elif request.user.role == 'seller' %}<li><a href="{% url 'seller_dashboard' %}">Dashboard</a></li><li><a href="{% url 'ScrapListing' %}">Sell scrap</a></li>{% endif %}
+      <li><a href="{% url 'profile' %}">Profile</a></li><li><a class="btn" href="{% url 'logout' %}">Log out</a></li>
+    {% else %}<li><a href="{% url 'login' %}">Log in</a></li><li><a class="btn" href="{% url 'register' %}">Get started →</a></li>{% endif %}
+  </ul>
+</nav></header>
 <main>
-    {% if messages %}
-        {% for message in messages %}<div class="alert" data-dismiss>{{ message }}</div>{% endfor %}
-    {% endif %}
-    {% block content %}{% endblock %}
+  {% if messages %}{% for message in messages %}<div class="alert" data-dismiss>{{ message }}</div>{% endfor %}{% endif %}
+  {% block content %}{% endblock %}
 </main>
-<footer class="site-footer"><p>♻️ Scrapify · Making scrap trading simple, local and sustainable.</p></footer>
-<script src="{% static 'js/app.js' %}"></script>
-{% block scripts %}{% endblock %}
-</body>
-</html>
+<footer class="site-footer"><p>♻ Scrapify · Trade smarter. Reuse more. Waste less.</p></footer>
+<script src="{% static 'js/app.js' %}"></script>{% block scripts %}{% endblock %}
+</body></html>
