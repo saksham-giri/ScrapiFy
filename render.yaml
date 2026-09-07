@@ -2,7 +2,7 @@ services:
   - type: web
     name: scrapify
     runtime: python
-    buildCommand: "./build.sh"
+    buildCommand: "bash build.sh"
     startCommand: "gunicorn Scrapify.wsgi:application"
     envVars:
       - key: SECRET_KEY
@@ -15,8 +15,6 @@ services:
         fromDatabase:
           name: scrapify-db
           property: connectionString
-      - key: CSRF_TRUSTED_ORIGINS
-        value: "https://scrapify.onrender.com"
 
 databases:
   - name: scrapify-db
