@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Scrapify · Trade scrap smarter{% endblock %}
+{% block content %}
+<section class="hero landing-hero">
+  <div class="hero-copy">
+    <span class="eyebrow">♻ Circular marketplace</span>
+    <h1>Give scrap a <span>second life.</span></h1>
+    <p class="hero-lead">Scrapify connects people who have recyclable material with buyers who can put it to good use — simply, locally, and transparently.</p>
+    <div class="actions">
+      <a class="btn btn-large" href="{% url 'register' %}">Start trading <span>→</span></a>
+      <a class="btn secondary btn-large" href="{% url 'login' %}">I already have an account</a>
+    </div>
+    <div class="trust-row"><span>✓ Easy listings</span><span>✓ Local marketplace</span><span>✓ Clear pricing</span></div>
+  </div>
+  <div class="hero-visual">
+    <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+    <div class="scrap-stack">
+      <div class="floating-card card-paper"><span>♻</span><strong>Paper</strong><small>Ready to reuse</small></div>
+      <div class="floating-card card-metal"><span>▦</span><strong>Metal</strong><small>₹12,500 available</small></div>
+      <div class="floating-card card-electronics"><span>◈</span><strong>Electronics</strong><small>New listing</small></div>
+      <div class="visual-core"><div class="core-ring">♻</div><strong>Scrapify</strong><small>Trade · Reuse · Repeat</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="section-intro"><span class="eyebrow">How it works</span><h2>From unused to useful in three steps.</h2><p>Everything you need to move recyclable material from your space to someone who needs it.</p></div>
+  <div class="steps-grid">
+    <article class="feature-card"><div class="feature-number">01</div><div class="feature-icon">＋</div><h3>List what you have</h3><p>Add the material, weight, price and a short description. Your listing is ready in minutes.</p></article>
+    <article class="feature-card featured"><div class="feature-number">02</div><div class="feature-icon">⌕</div><h3>Discover materials</h3><p>Buyers browse a focused marketplace and open detailed listings before making a booking.</p></article>
+    <article class="feature-card"><div class="feature-number">03</div><div class="feature-icon">↗</div><h3>Book & move it on</h3><p>Reserve available scrap and keep track of the transaction from your dashboard.</p></article>
+  </div>
+</section>
+
+<section class="impact-banner"><div><span class="eyebrow dark">Built for circular commerce</span><h2>Waste is only waste when it has nowhere else to go.</h2></div><a class="btn light" href="{% url 'register' %}">Join Scrapify →</a></section>
+{% endblock %}
