@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
+{% block title %}Create Account · Scrapify{% endblock %}
 {% block content %}
-<h1>Register</h1>
-
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    <button type="submit">
-        Register
-    </button>
-</form>
+<section class="auth-shell">
+  <div class="form-card">
+    <div class="auth-title"><span class="eyebrow">Join the marketplace</span><h1>Create your account</h1><p class="muted">Buy or sell recyclable scrap with Scrapify.</p></div>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Create account</button>
+    </form>
+    <p class="muted">Already registered? <a href="{% url 'login' %}">Log in</a>.</p>
+  </div>
+</section>
 {% endblock %}
