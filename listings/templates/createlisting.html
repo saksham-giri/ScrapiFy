@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Sell Scrap · Scrapify{% endblock %}
+{% block title %}Sell scrap · Scrapify{% endblock %}
 {% block content %}
-<div class="form-card"><div class="auth-title"><span class="eyebrow">Seller tools</span><h1>Create a listing</h1><p class="muted">Add clear details so buyers know exactly what you are selling.</p></div><form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit">Publish listing</button></form><p><a href="{% url 'seller_dashboard' %}">← Back to dashboard</a></p></div>
+<div class="form-card"><div class="auth-title"><span class="eyebrow">Seller studio</span><h1>Publish a listing.</h1><p class="muted">Give buyers the details they need to make a confident booking.</p></div><form method="post">{% csrf_token %}{{ form.as_p }}<div class="actions"><button class="btn" type="submit">Publish listing →</button><a class="btn secondary" href="{% url 'seller_dashboard' %}">Save for later</a></div></form><p style="margin-top:20px"><a class="muted" href="{% url 'seller_dashboard' %}">← Back to dashboard</a></p></div>
 {% endblock %}
