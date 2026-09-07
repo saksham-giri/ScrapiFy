@@ -1,21 +1,8 @@
 {% extends 'base.html' %}
+{% block title %}Buyer Dashboard · Scrapify{% endblock %}
 {% block content %}
-<h1>Buyer Dashboard</h1>
-<p>Welcome {{ request.user.username }}</p>
-<p>Email: {{ request.user.email }}</p>
-<p>Role: {{ request.user.role }}</p>
-<hr>
-<h2>Your Statistics</h2>
-<p>Active Bookings: {{ active_bookings }}</p>
-<p>Completed Bookings: {{ completed_bookings }}</p>
-<hr>
-<h2>Your Bookings</h2>
-{% for booking in bookings %}
-    <div>
-        <a href="{% url 'scrapdetails' booking.scrap.id %}">{{ booking.scrap.title }}</a>
-        — {{ booking.get_status_display }} — ₹{{ booking.scrap.asking_price }}
-    </div>
-{% empty %}
-    <p>You have no bookings yet. <a href="{% url 'marketplace' %}">Browse marketplace</a></p>
-{% endfor %}
+<div class="page-heading"><div><span class="eyebrow">Buyer workspace</span><h1>Your dashboard</h1><p class="muted">Welcome back, {{ request.user.username }}. Find useful materials and manage your bookings.</p></div><a class="btn" href="{% url 'marketplace' %}">Browse marketplace</a></div>
+<div class="stats"><div class="stat"><span class="muted">Active bookings</span><strong>{{ active_bookings }}</strong></div><div class="stat"><span class="muted">Completed bookings</span><strong>{{ completed_bookings }}</strong></div><div class="stat"><span class="muted">Account</span><strong>Buyer</strong></div></div>
+<div class="page-heading"><div><h2>Your bookings</h2><p class="muted">Track the scrap you have reserved.</p></div></div>
+<div class="table-list">{% for booking in bookings %}<div class="list-row"><div><strong><a href="{% url 'scrapdetails' booking.scrap.id %}">{{ booking.scrap.title }}</a></strong><div class="muted">₹{{ booking.scrap.asking_price }} · {{ booking.scrap.get_category_display }}</div></div><span class="badge">{{ booking.get_status_display }}</span></div>{% empty %}<div class="empty"><h3>No bookings yet</h3><p>Browse available scrap and reserve something useful.</p><a class="btn" href="{% url 'marketplace' %}">Explore marketplace</a></div>{% endfor %}</div>
 {% endblock %}
