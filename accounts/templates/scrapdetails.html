@@ -1,19 +1,5 @@
 {% extends 'base.html' %}
-
+{% block title %}{{ detailedlisting.title }} · Scrapify{% endblock %}
 {% block content %}
-    <h1>{{ detailedlisting.title }}</h1>
-    <p>{{ detailedlisting.desc }}</p>
-    <p>Price: {{ detailedlisting.asking_price }}</p>
-    <p>Category: {{ detailedlisting.get_category_display }}</p>
-    <p>Weight: {{ detailedlisting.weight }}</p>
-    <p>Seller: {{ detailedlisting.seller.username }}</p>
-
-    {% if detailedlisting.status == "available" and request.user.role == "buyer" %}
-        <form method="post" action="{% url 'book_listing' detailedlisting.id %}">
-            {% csrf_token %}
-            <button type="submit">Book this scrap</button>
-        </form>
-    {% elif detailedlisting.status != "available" %}
-        <p>This listing is no longer available.</p>
-    {% endif %}
+<section class="detail"><div class="detail-hero"><span class="badge">{{ detailedlisting.get_category_display }}</span><h1>{{ detailedlisting.title }}</h1><p class="muted">{{ detailedlisting.desc }}</p><div class="detail-meta"><div class="meta"><small>Asking price</small><strong class="price">₹{{ detailedlisting.asking_price }}</strong></div><div class="meta"><small>Weight</small><strong>{{ detailedlisting.weight }} kg</strong></div><div class="meta"><small>Seller</small><strong>{{ detailedlisting.seller.username }}</strong></div><div class="meta"><small>Status</small><strong>{{ detailedlisting.get_status_display }}</strong></div></div>{% if detailedlisting.status == 'available' and request.user.role == 'buyer' %}<form method="post" action="{% url 'book_listing' detailedlisting.id %}">{% csrf_token %}<button type="submit">Book this scrap</button></form>{% elif detailedlisting.status != 'available' %}<div class="alert">This listing is no longer available.</div>{% endif %}<p style="margin-top:20px"><a href="{% if request.user.role == 'seller' %}{% url 'seller_dashboard' %}{% else %}{% url 'marketplace' %}{% endif %}">← Back</a></p></div></section>
 {% endblock %}
