@@ -1,15 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Login · Scrapify{% endblock %}
+{% block title %}Log in · Scrapify{% endblock %}
 {% block content %}
-<section class="auth-shell">
-  <div class="form-card">
-    <div class="auth-title"><span class="eyebrow">Welcome back</span><h1>Log in to Scrapify</h1><p class="muted">Access your marketplace dashboard and bookings.</p></div>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Log in</button>
-    </form>
-    <p class="muted">New to Scrapify? <a href="{% url 'register' %}">Create an account</a>.</p>
-  </div>
-</section>
+<section class="auth-shell"><div class="auth-card"><aside class="auth-aside"><span class="eyebrow dark">Welcome back</span><h2>Keep the circular economy moving.</h2><p>Sign in to manage your listings, discover materials and keep track of bookings.</p><ul><li>Personal marketplace dashboard</li><li>Simple booking workflow</li><li>Buy and sell recyclable materials</li></ul></aside><div class="auth-form"><div class="auth-title"><span class="eyebrow">Your workspace</span><h1>Log in to Scrapify</h1><p class="muted">Enter your details to continue.</p></div><form method="post">{% csrf_token %}{{ form.as_p }}<button class="btn" type="submit">Log in →</button></form><p class="muted">New to Scrapify? <a href="{% url 'register' %}"><strong>Create an account</strong></a>.</p></div></div></section>
 {% endblock %}
