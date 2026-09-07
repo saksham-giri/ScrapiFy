@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Buyer Dashboard</h1>
+
+<p>Welcome {{ request.user.username }}</p>
+
+<p>Email: {{ request.user.email }}</p>
+
+<p>Role: {{ request.user.role }}</p>
+
+<hr>
+
+<h2>Your Statistics</h2>
+
+<p>Active Bookings: 0</p>
+
+<p>Completed Bookings: 0</p>
+{% endblock %}

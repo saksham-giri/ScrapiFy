@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% csrf_token %}
+    <h1>{{ detailedlisting.title }}</h1>
+    <p>{{ detailedlisting.desc }}</p>
+    <p>Price: {{ detailedlisting.asking_price }}</p>
+    <p>Category: {{ detailedlisting.category }}</p>
+
+{% endblock %}

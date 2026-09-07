@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Seller Dashboard</h1>
+
+<p>Welcome {{ request.user.username }}</p>
+
+<p>Email: {{ request.user.email }}</p>
+
+<p>Role: {{ request.user.role }}</p>
+
+<hr>
+
+<h2>Your Statistics</h2>
+
+<p>Total Listings: {{ total_listings }}</p>
+
+<p>My Listings:
+    {% for listing in my_listings %}
+        <ul><li>
+            <a href="{% url 'scrapdetails' listing.id %}">
+                {{listing.title}}
+            </a>
+            &emsp;
+            <a href="{% url 'edit_listing' listing.id %}">
+                Edit
+            </a>
+            &emsp;
+            <a href="{% url 'delete_listing' listing.id %}">
+                Delete
+            </a>
+        </li></ul>
+    {% empty %}
+        <p>No listings found.</p>
+    {% endfor %}
+
+</p>
+
+<p>Pending Pickups: {{ pending_pickups }}</p>
+
+<p>Completed Pickups: {{ completed_pickups }}</p>
+{% endblock %}

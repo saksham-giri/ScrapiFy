@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>MarketPlace Dashboard</h1>
+
+<hr>
+
+
+
+<p>Available Listings:
+    {% for listing in listings %}
+        <ul><li>
+            <a href="{% url 'scrapdetails' listing.id %}">
+                {{listing.title}}
+            </a>
+            &emsp;
+            <!-- <a href="{% url 'edit_listing' listing.id %}">
+                Edit
+            </a> -->
+            
+        </li></ul>
+    {% empty %}
+        <p>No listings found.</p>
+    {% endfor %}
+
+</p>
+
+
+{% endblock %}
