@@ -1,42 +1,45 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Scrapify - a marketplace for buying and selling recyclable scrap.">
     <title>{% block title %}Scrapify{% endblock %}</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: system-ui, sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
-        header, footer { background: #1a1a24; color: #fff; padding: 1rem; }
-        .navbar { display: flex; justify-content: space-between; max-width: 1200px; margin: 0 auto; }
-        .nav-links { display: flex; gap: 1rem; list-style: none; }
-        main { flex: 1; max-width: 1200px; margin: 0 auto; padding: 2rem; width: 100%; }
-        footer { text-align: center; margin-top: auto; }
-    </style>
-    {% block head %}
-    
-    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block head %}{% endblock %}
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div>Logo</div>
-            <ul class="nav-links">
-                <li>Home</li>
-                <li>About</li>
-                <li><a href="{%url 'register' %}">Login/Signup</a></li>
-                <li><a href="{%url 'logout' %}">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        
-        {% block content %}{% endblock %}
-    </main>
-
-    <footer>
-        <p>&copy; Scrapify </p>
-    </footer>
+<header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+        <a class="brand" href="{% url 'home' %}"><span class="brand-mark">S</span> Scrapify</a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            {% if request.user.is_authenticated %}
+                {% if request.user.role == 'buyer' %}
+                    <li><a href="{% url 'buyer_dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'marketplace' %}">Marketplace</a></li>
+                {% elif request.user.role == 'seller' %}
+                    <li><a href="{% url 'seller_dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'ScrapListing' %}">Sell Scrap</a></li>
+                {% endif %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a class="btn" href="{% url 'register' %}">Get Started</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+<main>
+    {% if messages %}
+        {% for message in messages %}<div class="alert" data-dismiss>{{ message }}</div>{% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+</main>
+<footer class="site-footer"><p>♻️ Scrapify · Making scrap trading simple, local and sustainable.</p></footer>
+<script src="{% static 'js/app.js' %}"></script>
+{% block scripts %}{% endblock %}
 </body>
 </html>
