@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Delete Listing · Scrapify{% endblock %}
+{% block title %}Delete listing · Scrapify{% endblock %}
 {% block content %}
-<div class="form-card" style="max-width:560px;text-align:center"><span class="eyebrow">Seller tools</span><h1>Delete this listing?</h1><p class="muted">You are about to permanently remove <strong>{{ listing.title }}</strong> from your marketplace inventory.</p><form method="post" data-confirm="Delete this listing permanently?">{% csrf_token %}<div class="actions" style="justify-content:center"><button class="btn danger" type="submit">Yes, delete</button><a class="btn secondary" href="{% url 'seller_dashboard' %}">Cancel</a></div></form></div>
+<div class="form-card" style="max-width:620px;text-align:center;padding:50px 34px"><div style="font-size:3.2rem">⚠</div><span class="eyebrow">Permanent action</span><h1>Delete this listing?</h1><p class="muted">You're about to remove <strong>{{ listing.title }}</strong> from your marketplace inventory. Buyers will no longer be able to see or book it.</p><form method="post" data-confirm="Delete this listing permanently?"><div class="actions" style="justify-content:center">{% csrf_token %}<button class="btn danger" type="submit">Yes, delete listing</button><a class="btn secondary" href="{% url 'seller_dashboard' %}">Keep it</a></div></form></div>
 {% endblock %}
