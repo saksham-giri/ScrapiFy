@@ -2,7 +2,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import LoginUser, RegistrationUser
-from .models import User
 from listings.models import Booking, Scrap
 
 
@@ -42,12 +41,7 @@ def seller_dashboard(request):
     my_listings = Scrap.objects.filter(seller=request.user).order_by("-created_at")
     pending_pickups = Booking.objects.filter(scrap__seller=request.user, status__in=["pending", "confirmed"]).count()
     completed_pickups = Booking.objects.filter(scrap__seller=request.user, status="completed").count()
-    return render(request, "seller.html", {
-        "my_listings": my_listings,
-        "total_listings": my_listings.count(),
-        "pending_pickups": pending_pickups,
-        "completed_pickups": completed_pickups,
-    })
+    return render(request, "seller.html", {"my_listings": my_listings, "total_listings": my_listings.count(), "pending_pickups": pending_pickups, "completed_pickups": completed_pickups})
 
 
 @login_required
@@ -55,11 +49,7 @@ def buyer_dashboard(request):
     if request.user.role != "buyer":
         return redirect("seller_dashboard")
     bookings = Booking.objects.filter(buyer=request.user).select_related("scrap", "scrap__seller").order_by("-booked_at")
-    return render(request, "buyer.html", {
-        "bookings": bookings,
-        "active_bookings": bookings.filter(status__in=["pending", "confirmed"]).count(),
-        "completed_bookings": bookings.filter(status="completed").count(),
-    })
+    return render(request, "buyer.html", {"bookings": bookings, "active_bookings": bookings.filter(status__in=["pending", "confirmed"]).count(), "completed_bookings": bookings.filter(status="completed").count()})
 
 
 @login_required
@@ -82,7 +72,7 @@ def edit_listing(request, pk):
 @login_required
 def delete_listing(request, pk):
     listing = get_object_or_404(Scrap, pk=pk, seller=request.user)
-    if request.method == "POST":
-        listing.delete()
-        return redirect("seller_dashboard")
-    return render(request, "edit.html", {"form": None, "listing": listing, "confirm_delete": True})
+    if request.method != "POST":
+        return render(request, "confirm_delete.html", {"listing": listing})
+    listing.delete()
+    return redirect("seller_dashboard")
